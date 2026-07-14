@@ -3,9 +3,7 @@ import type { ChatMessage, Simulation } from "../types/simulation";
 import { buildChatPrompt, buildFinancialEducatorPrompt } from "./prompt";
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-
-// Definimos o modelo fixo e estável para evitar erros de 404
-const modelName = "gemini-1.5-flash";
+const modelName = import.meta.env.VITE_GEMINI_MODEL || "gemini-3.5-flash";
 
 function assertConfigured() {
   if (!apiKey) {
@@ -16,10 +14,7 @@ function assertConfigured() {
 async function generateText(prompt: string): Promise<string> {
   assertConfigured();
   const client = new GoogleGenerativeAI(apiKey!);
-  
-  // Usamos o modelo garantido e sem forçar versão de API (v1beta)
   const model = client.getGenerativeModel({ model: modelName });
-  
   const result = await model.generateContent(prompt);
   return result.response.text();
 }
