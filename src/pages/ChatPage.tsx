@@ -9,7 +9,8 @@ export function ChatPage() {
     {
       id: crypto.randomUUID(),
       role: "assistant",
-      content: "Olá! Posso ajudar a transformar sua simulação em próximos passos financeiros mais claros.",
+      content:
+        "Olá! Posso ajudar a transformar sua simulação em próximos passos financeiros mais claros.",
       createdAt: new Date().toISOString(),
     },
   ]);
@@ -47,7 +48,11 @@ export function ChatPage() {
         },
       ]);
     } catch (unknownError) {
-      setError(unknownError instanceof Error ? unknownError.message : "Não foi possível enviar sua mensagem.");
+      setError(
+        unknownError instanceof Error
+          ? unknownError.message
+          : "Não foi possível enviar sua mensagem.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -57,7 +62,10 @@ export function ChatPage() {
     <div className="mx-auto flex max-w-4xl flex-col gap-5">
       <div>
         <h1 className="text-3xl font-extrabold tracking-normal">Chat com IA</h1>
-        <p className="mt-1 text-muted">Converse com o educador financeiro sobre metas, dívidas e organização mensal.</p>
+        <p className="mt-1 text-muted">
+          Converse com o educador financeiro sobre metas, dívidas e organização
+          mensal.
+        </p>
       </div>
 
       <section className="min-h-[28rem] border border-border bg-surface p-4 sm:p-6">
@@ -83,18 +91,25 @@ export function ChatPage() {
         </div>
       </section>
 
-      {error && <p className="border border-danger/40 bg-danger/10 p-3 text-sm text-danger">{error}</p>}
+      {error && (
+        <p className="border border-danger/40 bg-danger/10 p-3 text-sm text-danger">
+          {error}
+        </p>
+      )}
 
-      <form className="flex flex-col gap-3 border border-border bg-surface p-3 sm:flex-row" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col gap-3 border border-border bg-surface p-3 sm:flex-row"
+        onSubmit={handleSubmit}
+      >
         <input
           className="min-h-12 flex-1 border border-border bg-elevated px-4 outline-none transition placeholder:text-muted focus:border-neon focus:ring-1 focus:ring-neon"
           onChange={(event) => setContent(event.target.value)}
           placeholder="Digite sua pergunta financeira..."
           value={content}
         />
-        <Button 
-          disabled={!content.trim() || isLoading} 
-          icon={<Send size={18} className="neon-icon" />} 
+        <Button
+          disabled={!content.trim() || isLoading}
+          icon={<Send size={18} className="text-current" />}
           type="submit"
         >
           Enviar

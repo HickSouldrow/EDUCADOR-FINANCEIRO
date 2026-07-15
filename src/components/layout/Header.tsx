@@ -1,4 +1,11 @@
-import { BarChart3, History, MessageCircle, Moon, PiggyBank, Sun } from "lucide-react";
+import {
+  BarChart3,
+  History,
+  MessageCircle,
+  Moon,
+  PiggyBank,
+  Sun,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useTheme } from "../../contexts/ThemeContext";
 import { Button } from "../form/ui/Button";
@@ -21,8 +28,12 @@ export function Header() {
             <PiggyBank size={24} aria-hidden="true" className="neon-icon" />
           </span>
           <span>
-            <span className="block text-base font-extrabold leading-tight">Educador Financeiro</span>
-            <span className="block text-sm text-muted">Simulações com IA generativa</span>
+            <span className="block text-base font-extrabold leading-tight">
+              Educador Financeiro
+            </span>
+            <span className="block text-sm text-muted">
+              Simulações com IA generativa
+            </span>
           </span>
         </NavLink>
 
@@ -33,8 +44,8 @@ export function Header() {
               <NavLink
                 className={({ isActive }) =>
                   `inline-flex min-h-10 items-center gap-2 px-3 text-sm font-semibold transition ${
-                    isActive 
-                      ? "bg-surface text-primary border-b-2 border-primary" 
+                    isActive
+                      ? "bg-surface text-primary border-b-2 border-primary"
                       : "text-muted hover:text-foreground"
                   }`
                 }
@@ -46,11 +57,19 @@ export function Header() {
               </NavLink>
             ))}
           </nav>
-          
+
           <Button
-            aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
-            className="h-11 w-11 px-0 border border-border hover:border-primary"
-            icon={theme === "dark" ? <Sun size={18} className="neon-icon" /> : <Moon size={18} />}
+            aria-label={
+              theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"
+            }
+            className="h-12 w-12 px-0 border border-border hover:border-primary"
+            icon={
+              theme === "dark" ? (
+                <Sun size={28} className="neon-icon" />
+              ) : (
+                <Moon size={28} />
+              )
+            }
             onClick={toggleTheme}
             title={theme === "dark" ? "Tema claro" : "Tema escuro"}
             variant="secondary"
